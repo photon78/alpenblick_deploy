@@ -1,0 +1,297 @@
+# .htaccess — Hotel Alpenblick (Astro Static Site)
+# Generated: 2026-04-04
+# DocumentRoot: /var/www/html/alpenblick12/public
+
+
+# =============================================
+# 1. REDIRECTS
+# =============================================
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # --- HTTPS erzwingen ---
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+  # --- Kein Zugriff auf _originals/ (JPG-Rohdaten) ---
+  RewriteRule ^images/_originals/ - [F,L]
+
+  # --- sitemap.xml → sitemap-index.xml (Standard-Pfad für Crawler) ---
+  RewriteRule ^sitemap\.xml$ /sitemap-index.xml [R=301,L]
+
+  # --- Trailing Slash erzwingen (keine Duplikate ohne Slash) ---
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_URI} !/$
+  RewriteRule ^(.*)$ /$1/ [R=301,L]
+
+  # --- non-www → www (kanonische Domain: www.alpenblick.swiss) ---
+  RewriteCond %{HTTP_HOST} ^alpenblick\.swiss$ [NC]
+  RewriteRule ^(.*)$ https://www.alpenblick.swiss/$1 [R=301,L]
+
+  # --- Domain-Redirect alpenblickzeneggen.ch → alpenblick.swiss ---
+  RewriteCond %{HTTP_HOST} ^(www\.)?alpenblickzeneggen\.ch$ [NC]
+  RewriteRule ^(.*)$ https://www.alpenblick.swiss/$1 [R=301,L]
+
+  # --- Doppelte Slashes bereinigen ---
+  RewriteCond %{THE_REQUEST} \s[^?]*//
+  RewriteRule ^(.*)$ /$1 [R=301,L]
+
+  # --- TYPO3 Query-Parameter entfernen (L=, l=, cHash=, id=) ---
+  # Verhindert dass alte TYPO3 Sprachparameter indexiert werden
+  RewriteCond %{QUERY_STRING} (^|&)(L|l|cHash|id)=
+  RewriteRule ^(.*)$ /$1? [R=301,L]
+
+  # --- Interne URL-Redirects (alte TYPO3-Pfade → neue Astro-Pfade) ---
+  # Diese gelten auf JEDER Domain (alpenblickzeneggen.ch und später alpenblick.swiss)
+
+  # Alte fileadmin/ Dateien und TYPO3 index.php (nicht mehr vorhanden)
+  RewriteRule ^fileadmin/user_upload/SpeisekarteAlpenblickF_E\.pdf$ /gastronomie/restaurant/ [R=301,L]
+  RewriteRule ^fileadmin/pdfAndMore/GastABC_deutsch\.pdf$           /gastronomie/restaurant/ [R=301,L]
+  RewriteRule ^fileadmin/pdfAndMore/GastABC_francais\.pdf$          /fr/gastronomie/restaurant/ [R=301,L]
+  RewriteRule ^fileadmin/pdfAndMore/GastABC_english\.pdf$           /en/gastronomy/restaurant/ [R=301,L]
+  RewriteRule ^fileadmin/.*$                                         / [R=301,L]
+  RewriteRule ^(en/|fr/)?hotel/index\.php.*$                        / [R=301,L]
+  RewriteRule ^index\.php.*$                                         / [R=301,L]
+
+  # DE
+  RewriteRule ^willkommen/?$                         / [R=301,L]
+  RewriteRule ^de/portrait/?$                        /ueber-uns/portrait/ [R=301,L]
+  RewriteRule ^de/verfuegbarkeit-buchen/?$           /hotel/buchen/ [R=301,L]
+  RewriteRule ^hotel/buchen-1/?$                     /hotel/buchen/ [R=301,L]
+  RewriteRule ^hotel/portrait/?$                     /ueber-uns/portrait/ [R=301,L]
+  RewriteRule ^bilder/?$                             /bilder/interaktives-panorama/ [R=301,L]
+  RewriteRule ^bilder/galerie/wein/?$                /gastronomie/kellerei/ [R=301,L]
+  RewriteRule ^bilder/galerie/?(.*)$                 /bilder/interaktives-panorama/ [R=301,L]
+  RewriteRule ^bilder/interakives-panorama/?$        /bilder/interaktives-panorama/ [R=301,L]
+  RewriteRule ^ueber-uns/jobs/?$                     /ueber-uns/kontakt/ [R=301,L]
+  RewriteRule ^hotel/preisliste/?$                   /hotel/zimmer/ [R=301,L]
+
+  # EN
+  RewriteRule ^en/hotel/book/?$                      /en/hotel/booking/ [R=301,L]
+  RewriteRule ^en/pictures/interactive-panorama/?$   /en/pictures/panorama/ [R=301,L]
+  RewriteRule ^en/welcome/?$                         /en/ [R=301,L]
+  RewriteRule ^en/activities/?$                      /en/activities/hiking [R=301,L]
+  RewriteRule ^en/hotel/buchen-1/?$                  /en/hotel/booking [R=301,L]
+  RewriteRule ^en/pictures/gallery/wine/?$           /en/gastronomy/winery/ [R=301,L]
+  RewriteRule ^en/pictures/gallery/?(.*)$            /en/pictures/panorama/ [R=301,L]
+  RewriteRule ^en/pictures/panorama-view/?$          /en/pictures/panorama/ [R=301,L]
+  RewriteRule ^en/about-us/how-to-find-us/?$        /en/about/location/ [R=301,L]
+  RewriteRule ^en/about-us/contact/?$               /en/about/contact/ [R=301,L]
+  RewriteRule ^en/about-us/portrait/?$              /en/about/portrait/ [R=301,L]
+  RewriteRule ^en/ueber-uns/jobs/?$                 /en/about/contact/ [R=301,L]
+  RewriteRule ^en/general-terms-and-conditions/?$   /en/privacy/ [R=301,L]
+  RewriteRule ^en/hotel/pricelist/?$                /en/hotel/rooms/ [R=301,L]
+
+  # FR
+  RewriteRule ^fr/hotel/reserver/?$                  /fr/hotel/reservation/ [R=301,L]
+  RewriteRule ^fr/images/panorama-interactif/?$      /fr/images/panorama/ [R=301,L]
+  RewriteRule ^fr/bienvenue/?$                       /fr/ [R=301,L]
+  RewriteRule ^fr/images/galerie/vin/?$              /fr/gastronomie/cave/ [R=301,L]
+  RewriteRule ^fr/images/galerie/?(.*)$              /fr/images/panorama/ [R=301,L]
+  RewriteRule ^fr/bilder/panorama/?$                 /fr/images/panorama/ [R=301,L]
+  RewriteRule ^fr/a-propos-de-nous/situation/?$      /fr/a-propos/situation/ [R=301,L]
+  RewriteRule ^fr/a-propos-de-nous/contact/?$        /fr/a-propos/contact/ [R=301,L]
+  RewriteRule ^fr/a-propos-de-nous/portrait/?$       /fr/a-propos/portrait/ [R=301,L]
+  RewriteRule ^fr/activitees/randonnee/?$            /fr/activites/randonnee/ [R=301,L]
+  RewriteRule ^fr/activitees/faire-du-velo/?$        /fr/activites/velo/ [R=301,L]
+  RewriteRule ^fr/ueber-uns/jobs/?$                  /fr/a-propos/contact/ [R=301,L]
+  RewriteRule ^fr/hotel/toutes-service/?$            /fr/hotel/toutes-services/ [R=301,L]
+  RewriteRule ^fr/mention-legale/?$                  /fr/mentions-legales/ [R=301,L]
+  RewriteRule ^fr/hotel/liste-des-prix/?$            /fr/hotel/chambres/ [R=301,L]
+
+</IfModule>
+
+
+# =============================================
+# 2. COMPRESSION
+# =============================================
+
+<IfModule mod_deflate.c>
+  <IfModule mod_setenvif.c>
+    <IfModule mod_headers.c>
+      SetEnvIfNoCase ^(Accept-EncodXng|X-cept-Encoding|X{15}|~{15}|-{15})$ ^((gzip|deflate)\s*,?\s*)+|[X~-]{4,13}$ HAVE_Accept-Encoding
+      RequestHeader append Accept-Encoding "gzip,deflate" env=HAVE_Accept-Encoding
+    </IfModule>
+  </IfModule>
+
+  <IfModule mod_filter.c>
+    AddOutputFilterByType DEFLATE \
+      application/atom+xml \
+      application/javascript \
+      application/json \
+      application/ld+json \
+      application/manifest+json \
+      application/rss+xml \
+      application/vnd.ms-fontobject \
+      application/x-font-ttf \
+      application/x-javascript \
+      application/xhtml+xml \
+      application/xml \
+      font/eot \
+      font/opentype \
+      font/otf \
+      font/ttf \
+      image/svg+xml \
+      image/vnd.microsoft.icon \
+      text/css \
+      text/html \
+      text/javascript \
+      text/plain \
+      text/xml
+  </IfModule>
+
+  <IfModule mod_mime.c>
+    AddEncoding gzip svgz
+  </IfModule>
+</IfModule>
+
+
+# =============================================
+# 3. CACHING (optimiert für Astro)
+# =============================================
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # HTML: nie cachen (bei jedem Deploy frisch)
+  ExpiresByType text/html "access plus 0 seconds"
+
+  # CSS/JS: 1 Jahr (Astro generiert Content-Hashes)
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+
+  # Bilder: 1 Monat
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType image/avif "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType image/gif "access plus 1 month"
+  ExpiresByType image/x-icon "access plus 1 week"
+  ExpiresByType image/vnd.microsoft.icon "access plus 1 week"
+
+  # Fonts: 1 Jahr (statisch, ändern sich nie)
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType font/ttf "access plus 1 year"
+  ExpiresByType font/otf "access plus 1 year"
+  ExpiresByType application/vnd.ms-fontobject "access plus 1 year"
+
+  # PDF (Speisekarte etc.): 1 Woche
+  ExpiresByType application/pdf "access plus 1 week"
+
+  # JSON/XML: kein Cache
+  ExpiresByType application/json "access plus 0 seconds"
+  ExpiresByType application/xml "access plus 0 seconds"
+  ExpiresByType text/xml "access plus 0 seconds"
+
+  # Manifest: 1 Woche
+  ExpiresByType application/manifest+json "access plus 1 week"
+</IfModule>
+
+# Immutable für Astro Content-Hashed Assets (_astro/)
+<IfModule mod_headers.c>
+  <FilesMatch "\.[a-f0-9]{8}\.(js|css|woff2?)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
+
+
+# =============================================
+# 4. MIME TYPES & CHARSET
+# =============================================
+
+AddDefaultCharset utf-8
+
+<IfModule mod_mime.c>
+  AddCharset utf-8 .atom .css .js .json .manifest .rdf .rss .vtt .webapp .webmanifest .xml .txt
+
+  # Moderne Formate
+  AddType application/javascript js
+  AddType application/json json
+  AddType application/manifest+json webmanifest
+  AddType font/woff woff
+  AddType font/woff2 woff2
+  AddType font/ttf ttf
+  AddType font/otf otf
+  AddType image/avif avif
+  AddType image/webp webp
+  AddType image/svg+xml svg svgz
+  AddType text/plain txt md
+</IfModule>
+
+
+# =============================================
+# 5. SECURITY HEADERS
+# =============================================
+
+<IfModule mod_headers.c>
+  # Kein MIME-Sniffing
+  Header set X-Content-Type-Options "nosniff"
+
+  # Clickjacking-Schutz
+  Header set X-Frame-Options "SAMEORIGIN"
+
+  # XSS-Filter
+  Header set X-XSS-Protection "1; mode=block"
+
+  # Referrer: Origin bei Cross-Origin, voller Referrer bei Same-Origin
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Permissions Policy (kein Zugriff auf Kamera/Mikro/Geolocation)
+  Header set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+
+  # HSTS (1 Jahr, inkl. Subdomains)
+  Header set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
+
+  # ETag entfernen (Expires/Cache-Control reicht)
+  Header unset ETag
+</IfModule>
+FileETag None
+
+
+# =============================================
+# 6. CROSS-ORIGIN
+# =============================================
+
+# CORS für Fonts (Google Fonts etc.)
+<IfModule mod_headers.c>
+  <FilesMatch "\.(eot|otf|tt[cf]|woff2?)$">
+    Header set Access-Control-Allow-Origin "*"
+  </FilesMatch>
+</IfModule>
+
+
+# =============================================
+# 7. SONSTIGES
+# =============================================
+
+# Keine Verzeichnis-Listings
+<IfModule mod_autoindex.c>
+  Options -Indexes
+</IfModule>
+
+# Keine MultiViews
+Options -MultiViews
+
+# Versteckte Dateien blockieren (ausser .well-known)
+<IfModule mod_rewrite.c>
+  RewriteCond %{REQUEST_URI} "!(^|/)\.well-known/([^./]+./?)+$" [NC]
+  RewriteCond %{SCRIPT_FILENAME} -d [OR]
+  RewriteCond %{SCRIPT_FILENAME} -f
+  RewriteRule (?:^|/)\. - [F]
+</IfModule>
+
+# .git blockieren
+<IfModule mod_alias.c>
+  RedirectMatch 404 /\.(?:git|svn|hg)/
+</IfModule>
+
+# Sensible Dateien blockieren
+<IfModule mod_authz_core.c>
+  <FilesMatch "(?i:^\.env|^composer\.(json|lock)|\.ya?ml|\.log|\.sql|\.sqlite)$">
+    Require all denied
+  </FilesMatch>
+</IfModule>

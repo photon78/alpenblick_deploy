@@ -1,0 +1,3 @@
+# Deploy-Artefakte: NICHT committen (werden per SFTP manuell hochgeladen)
+smtp-config.php
+*.log

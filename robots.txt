@@ -1,0 +1,33 @@
+User-agent: *
+Allow: /
+
+# KI-Crawler explizit erlaubt
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://alpenblick.swiss/sitemap-index.xml
+
+# LLM-Kontext (llms.txt Spezifikation)
+# Siehe: https://www.alpenblick.swiss/llms.txt
+# Hinweis: llms.txt ist kein offizielles robots.txt-Directive,
+# aber KI-Crawler wie ClaudeBot, GPTBot etc. erkennen die Datei
+# automatisch unter /llms.txt (analog zu /robots.txt).
+
+# Steblerbuch: nicht öffentlich indexiert
+User-agent: *
+Disallow: /stebler/

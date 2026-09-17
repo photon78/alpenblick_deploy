@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<krpano version="1.18.3">
+
+    
+  <!-- Spot Style - Default Point Spot Style 1 -->
+  <style name="IconDefaultPointSpotStyle1"
+         url="%FIRSTXML%/spots/hotspot_neutral_sequence_user_defaultpoint0.png"
+         visible="false"
+         frame="0"
+         lastframe="15"
+         framewidth="60"
+         frameheight="60"
+         stopspotsequence="false"
+         crop="0|0|60|60"
+         onloaded="startspotanimation(0.1);"
+         onhover="onhoverIconDefaultPointSpotStyle1"
+         onout="onoutIconDefaultPointSpotStyle1"
+         height="150"
+         width="150"
+         />
+  <action name="onhoverIconDefaultPointSpotStyle1">
+    showtooltip('hotspot');
+  </action>
+  <action name="onoutIconDefaultPointSpotStyle1">
+    hideTooltip();
+
+
+
+  </action>
+
+
+
+
+  <!-- ************ -->
+  <!-- Logo : viewport / topright -->
+  <!-- ************ -->
+
+  <layer align="topright"
+         x="10"
+         y="10"
+         zorder="0"
+         name="logo"
+         keep="true"
+         visible="false"
+         capture="false"
+
+         height="90px"
+         width="140px"
+  
+      tooltip="logotooltipText" 
+
+ onhover="showTooltip('plugin');" 
+  onout="hideTooltip();"       
+  url="%FIRSTXML%/graphics/logo/hotellogohell_hg_transparent_1000px.png"           
+  onclick="openurl(fileadmin/user_upload/alpenblickpano.html,_blank);"  
+
+
+         />
+
+  <events name="logoevents" 
+    onTourStart="showlogo();"
+    keep="false" />
+
+  <action name="hidelogo">
+    set(layer[logo].visible, false);
+  </action>
+  <action name="showlogo">
+      set(layer[logo].visible, true);
+  </action>
+
+
+
+
+
+  <!-- ******************** -->
+  <!-- Combobox : panoramas -->
+  <!-- ******************** -->
+
+
+<events name="combopanolistallpanoramasStartTourEvents" onTourStart="set(layer[combopanolistallpanoramas].isStarted, true);if(layer[combopanolistallpanoramas].isLoaded,combopanolistallpanoramasShow(););" keep="true" />
+
+
+  <layer name="combopanolistallpanoramas"
+         url="%FIRSTXML%/graphics/combobox.js"
+         keep="true"
+         visible="false"
+         zorder="1"
+         align="bottom-right"
+         x="5" y="10"
+         rowcount="10"
+         onloaded="combopanolistallpanoramasLoaded();"
+         isStarted="false"
+         isLoaded="false"
+         itemcount="0"
+         />
+
+  <action name="combopanolistallpanoramasLoaded">
+    
+    layer[combopanolistallpanoramas].removeAll();
+    set(layer[combopanolistallpanoramas].itemcount, 0);
+    
+    combopanolistallpanoramasAddItem(pano11_title, pano11, pano11, false);
+    combopanolistallpanoramasAddItem(pano9_title, pano9, pano9, false);
+    set(layer[combopanolistallpanoramas].isLoaded, true);
+    
+    if(layer[combopanolistallpanoramas].isStarted,
+      combopanolistallpanoramasShow();
+    );
+  </action>
+
+
+  <action name="combopanolistallpanoramasAddItem">
+    getmessage(caption, %1);
+    
+    indexoftxt(found, get(caption), '&amp;');
+    if(found GE 0,
+      subtxt(part1, get(caption), 0, get(found));
+      add(found, 5);
+      subtxt(part2, get(caption), get(found), get(caption.length));
+      txtadd(caption, get(part1), '&amp;', get(part2));
+    );
+    if(%4,
+      txtadd(title, "&#x00A0;&#x00A0;&#x00A0;", get(caption));
+    ,
+      set(title, get(caption));
+    );
+    layer[combopanolistallpanoramas].addIdItem(%2, get(title), mainloadscene(%3));
+    inc(layer[combopanolistallpanoramas].itemcount);
+  </action>
+
+  <events name="combopanolistallpanoramasEvents"
+          hidetourcontrols="combopanolistallpanoramasHide();"
+          showtourcontrols="combopanolistallpanoramasShow();"
+          onnewpano="combopanolistallpanoramasOnPanorama();"
+          keep="true"/>
+
+  <action name="combopanolistallpanoramasHide">
+    set(layer[combopanolistallpanoramas].visible, false);
+  </action>
+  <action name="combopanolistallpanoramasShow">
+  if(layer[combopanolistallpanoramas].isLoaded,
+    if (layer[combopanolistallpanoramas].itemcount GT 0,
+      set(layer[combopanolistallpanoramas].visible, true);
+    ,
+      set(layer[combopanolistallpanoramas].visible, false);
+    );
+  ,
+    set(layer[combopanolistallpanoramas].visible, false);
+  );
+  </action>
+
+  <action name="combopanolistallpanoramasOnPanorama">
+    if(layer[combopanolistallpanoramas].isLoaded,
+      combopanolistallpanoramasUpdateList();
+    ,
+      delayedcall(0.2, combopanolistallpanoramasOnPanorama);
+    );
+  </action>
+
+
+  <action name="combopanolistallpanoramasUpdateList">
+    set(itemtoselect, get(scene[get(xml.scene)].name));
+    layer[combopanolistallpanoramas].selectIdItem(get(itemtoselect));
+  </action>
+
+
+  <!-- ************ -->
+  <!-- iControl Bar -->
+  <!-- ************ -->
+
+
+  <krpano theme11barbuilt="false" theme11backgroundwidthwhenclosed="0" theme11backgroundwidthwhenopened="0" theme11IsOpened="false" />
+  <events name="theme11events" onxmlcomplete="theme11buildMenuBar();" keep="true"/>
+  <action name="theme11buildMenuBar">
+    ifnot (theme11barbuilt, theme11buildMenu(); set(theme11barbuilt, true););
+  </action>
+
+  <style name="theme11_btn_style"
+         keep="true"
+         edge="right"
+         align="right"
+         x="0" y="0"
+         width="40" height="40"
+         crop="0|0|60|60"
+         onovercrop="0|60|60|60"
+         ondowncrop="0|120|60|60"
+         onhover="showTooltip('plugin', theme11menuTooltipStyle, bottom);"
+         onout="hideTooltip();"
+         />
+
+  <layer name="theme11_menu_bg"
+         keep="true"
+         type="container"
+         zorder="2"
+         width="40"
+         height="40"
+         align="bottom"
+         x="0" y="10"
+         maskchildren="true"
+         rotate="0"
+         visible="false"
+         >
+
+
+    <layer name="theme11btn_in"
+            url="%FIRSTXML%/graphics/icontrolbar/btn_zoom_in.png"
+            ondown="set(fov_moveforce, -1);
+"
+            onup="set(fov_moveforce, 0);
+"
+            style="theme11_btn_style"
+            visible="false"
+            tooltip="controlBar_izoomInTip"
+            devices="desktop"
+            />
+    <layer name="theme11btn_out"
+            url="%FIRSTXML%/graphics/icontrolbar/btn_zoom_out.png"
+            ondown="set(fov_moveforce, +1);
+"
+            onup="set(fov_moveforce, 0);
+"
+            style="theme11_btn_style"
+            visible="false"
+            tooltip="controlBar_izoomOutTip"
+            devices="desktop"
+            />
+
+    <layer name="theme11btn_left"
+            url="%FIRSTXML%/graphics/icontrolbar/btn_move_left.png"
+            ondown="set(hlookat_moveforce, -1);
+"
+            onup="set(hlookat_moveforce, 0);
+"
+            style="theme11_btn_style"
+            visible="false"
+            tooltip="controlBar_imoveLeftTip"
+            devices="desktop"
+            />
+    <layer name="theme11btn_right"
+            url="%FIRSTXML%/graphics/icontrolbar/btn_move_right.png"
+            ondown="set(hlookat_moveforce, +1);
+"
+            onup="set(hlookat_moveforce, 0);
+"
+            style="theme11_btn_style"
+            visible="false"
+            tooltip="controlBar_imoveRightTip"
+            devices="desktop"
+            />
+
+    <layer name="theme11btn_up"
+            url="%FIRSTXML%/graphics/icontrolbar/btn_move_up.png"
+            ondown="set(vlookat_moveforce, -1);
+"
+            onup="set(vlookat_moveforce, 0);
+"
+            style="theme11_btn_style"
+            visible="false"
+            tooltip="controlBar_imoveUpTip"
+            devices="desktop"
+            />
+    <layer name="theme11btn_down"
+            url="%FIRSTXML%/graphics/icontrolbar/btn_move_down.png"
+            ondown="set(vlookat_moveforce, +1);
+"
+            onup="set(vlookat_moveforce, 0);
+"
+            style="theme11_btn_style"
+            visible="false"
+            tooltip="controlBar_imoveDownTip"
+            devices="desktop"
+            />
+
+
+
+
+
+    <layer name="theme11btn_openfs"
+            url="%FIRSTXML%/graphics/icontrolbar/btn_enter_fs.png"
+            onclick="enterFullscreen();
+"
+            style="theme11_btn_style"
+            visible="false"
+            devices="fullscreensupport"
+            tooltip="controlBar_iopenFsTip"
+            />
+    <layer name="theme11btn_closefs"
+            url="%FIRSTXML%/graphics/icontrolbar/btn_close_fs.png"
+            onclick="exitFullscreen();
+"
+            style="theme11_btn_style"
+            visible="false"
+            devices="fullscreensupport"
+            tooltip="controlBar_icloseFsTip"
+            />
+
+    <layer name="theme11btn_autorotate_on"
+            url="%FIRSTXML%/graphics/icontrolbar/btn_start_autorotation.png"
+            onclick="resumeautorotation();
+"
+            style="theme11_btn_style"
+            visible="false"
+            tooltip="controlBar_iautorotateOnTip"
+            />
+    <layer name="theme11btn_autorotate_off"
+            url="%FIRSTXML%/graphics/icontrolbar/btn_stop_autorotation.png"
+            onclick="pauseautorotation();
+"
+            style="theme11_btn_style"
+            visible="false"
+            tooltip="controlBar_iautorotateOffTip"
+            />
+
+
+
+
+
+ </layer>
+
+
+
+
+
+  <action name="theme11hideMenuControls">
+    set(theme11IsOpened, false);
+
+
+if (device.desktop,
+  set(layer[theme11btn_in].visible, false);
+  set(layer[theme11btn_out].visible, false);
+);
+if (device.desktop,
+  set(layer[theme11btn_up].visible, false);
+  set(layer[theme11btn_down].visible, false);
+);
+if (device.desktop,
+  set(layer[theme11btn_left].visible, false);
+  set(layer[theme11btn_right].visible, false);
+);
+  theme11updateFullscreenButtons();
+
+
+  theme11updateAutorotationButtons();
+
+
+
+
+
+    set(layer[theme11_menu_bg].width , get(theme11backgroundwidthwhenclosed));
+  set(layer[theme11_menu_bg].visible, true);
+  </action>
+  <action name="theme11showMenuControls">
+    set(theme11IsOpened, true);
+  set(layer[theme11_menu_bg].visible, true);
+
+
+if (device.desktop,
+  set(layer[theme11btn_in].visible, true);
+  set(layer[theme11btn_out].visible, true);
+);
+if (device.desktop,
+  set(layer[theme11btn_up].visible, true);
+  set(layer[theme11btn_down].visible, true);
+);
+if (device.desktop,
+  set(layer[theme11btn_left].visible, true);
+  set(layer[theme11btn_right].visible, true);
+);
+  theme11updateFullscreenButtons();
+
+
+  theme11updateAutorotationButtons();
+
+
+
+
+
+    set(layer[theme11_menu_bg].width, get(theme11backgroundwidthwhenopened));
+  </action>
+
+
+
+
+  <events name="theme11menufullscreenchangeevent"
+          onenterfullscreen="theme11updateFullscreenButtons();"
+          onexitfullscreen="theme11updateFullscreenButtons();"
+          keep="true"/>
+  <action name="theme11HideFullscreenButtons">
+    set(layer[theme11btn_openfs].visible , false);
+    set(layer[theme11btn_closefs].visible, false);
+  </action>
+  <action name="theme11ShowFullscreenButtons">
+    if (device.fullscreensupport,
+      if(tour_fullscreen,
+        set(layer[theme11btn_openfs].visible , false);
+        set(layer[theme11btn_closefs].visible, true);
+      ,
+        set(layer[theme11btn_openfs].visible ,true);
+        set(layer[theme11btn_closefs].visible,false);
+      );
+    ,
+      theme11HideFullscreenButtons();
+    );
+  </action>
+  <action name="theme11updateFullscreenButtons">
+    set(theme11DisplayFullscreenButtons, false);
+    if (theme11IsOpened, set(theme11DisplayFullscreenButtons, true););
+    if (theme11DisplayFullscreenButtons,
+      theme11ShowFullscreenButtons();
+    ,
+      theme11HideFullscreenButtons();
+    );
+  </action>
+
+  <events name="theme11AutorotationEvents"
+    onstartautorotation="theme11updateAutorotationButtons();"
+    onresumeautorotation="theme11updateAutorotationButtons();"
+    onstopautorotation="theme11updateAutorotationButtons();"
+    onpauseautorotation="theme11updateAutorotationButtons();"
+    keep="true"/>
+  <action name="theme11HideAutorotationButtons">
+    set(layer[theme11btn_autorotate_off].visible, false);
+    set(layer[theme11btn_autorotate_on].visible , false);
+  </action>
+  <action name="theme11ShowAutorotationButtons">
+    if(autorotate.enabled == false,
+      set(layer[theme11btn_autorotate_off].visible, false);
+      set(layer[theme11btn_autorotate_on].visible , true);
+    ,
+      set(layer[theme11btn_autorotate_off].visible, true);
+      set(layer[theme11btn_autorotate_on].visible , false);
+    );
+  </action>
+  <action name="theme11updateAutorotationButtons">
+    set(theme11DisplayAutorotationButtons, false);
+    if (theme11IsOpened, set(theme11DisplayAutorotationButtons, true););
+    if (theme11DisplayAutorotationButtons,
+      theme11ShowAutorotationButtons();
+    ,
+      theme11HideAutorotationButtons();
+    );
+  </action>
+
+
+
+<layer name="theme11menuTooltipStyle"
+  keep="true"
+  enabled="false"
+  capture="false"
+  url="%FIRSTXML%/graphics/textfield.swf"
+  align="center"
+  background="false"
+  border="false"
+  css="color:#000000;font-family:Helvetica;font-weight:bold;font-size:14px;text-align:left;"
+  height="20"
+  autoheight="true"
+  autowidth="auto"
+  xoffset="0"
+  yoffset="0"
+  padding="2"
+  selectable="false"
+  zorder="0"
+  visible="false"
+  html=""
+  edge="bottom"
+/>
+  <action name="theme11buildMenu">
+    
+    set(theme11button_pos, 0);
+
+
+
+      if (device.fullscreensupport,
+        set(layer[theme11btn_openfs].x , get(theme11button_pos));
+        set(layer[theme11btn_closefs].x, get(theme11button_pos));
+        inc(theme11button_pos, 45);
+      );
+
+
+
+      set(layer[theme11btn_autorotate_on].x , get(theme11button_pos));
+      set(layer[theme11btn_autorotate_off].x, get(theme11button_pos));
+      inc(theme11button_pos, 45);
+
+
+
+
+
+      if (device.desktop,
+        set(layer[theme11btn_right].x, get(theme11button_pos));
+        inc(theme11button_pos, 45);
+        set(layer[theme11btn_left].x, get(theme11button_pos));
+        inc(theme11button_pos, 45);
+      );
+
+      if (device.desktop,
+        set(layer[theme11btn_down].x, get(theme11button_pos));
+        inc(theme11button_pos, 45);
+        set(layer[theme11btn_up].x, get(theme11button_pos));
+        inc(theme11button_pos, 45);
+      );
+
+      if (device.desktop,
+        set(layer[theme11btn_out].x, get(theme11button_pos));
+        inc(theme11button_pos, 45);
+        set(layer[theme11btn_in].x, get(theme11button_pos));
+        inc(theme11button_pos, 45);
+      );
+
+      dec(theme11button_pos, 5);
+
+      set(theme11backgroundwidthwhenopened, get(theme11button_pos));
+      set(layer[theme11_menu_bg].width, get(theme11backgroundwidthwhenopened));
+  
+  
+  
+    </action>
+
+  <events name="theme11StartTourEvents" onTourStart="theme11CallOnStartTour();" keep="true" />
+  
+  <action name="theme11CallOnStartTour">
+    
+    theme11showMenuControls();
+  </action>
+
+
+  <!-- Fullscreen Management -->
+  <action name="exitFullScreen" devices="fullscreensupport">set(tour_fullscreen,false);set(fullscreen,false);</action>
+  <action name="enterFullScreen" devices="fullscreensupport">set(tour_fullscreen,true);set(fullscreen,true);</action>
+  <action name="switchFullScreen">if(tour_fullscreen,exitFullScreen();,enterFullScreen(););</action>
+
+  
+  <events name="krpanoExitFullscreenEvent"
+    onexitfullscreen="if(tour_fullscreen,exitFullScreenChangeEvent(););"
+    keep="true" />
+
+  <action name="exitFullScreenChangeEvent" devices="fullscreensupport">set(tour_fullscreen,false);events.dispatch(onexitfullscreen);</action>
+
+</krpano>

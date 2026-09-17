@@ -1,0 +1,33 @@
+{
+  "stand": "17.09.2026 06:05",
+  "quelle": "MeteoSchweiz",
+  "tage": [
+    {
+      "tag": "Donnerstag",
+      "datum": "17.09.",
+      "emoji": "⛅",
+      "wetter": "Teilweise bewölkt",
+      "max": 17,
+      "min": 7,
+      "niederschlag_mm": 0.1
+    },
+    {
+      "tag": "Freitag",
+      "datum": "18.09.",
+      "emoji": "🌤️",
+      "wetter": "Meist sonnig",
+      "max": 17,
+      "min": 9,
+      "niederschlag_mm": 0.0
+    },
+    {
+      "tag": "Samstag",
+      "datum": "19.09.",
+      "emoji": "☀️",
+      "wetter": "Sonnig",
+      "max": 18,
+      "min": 7,
+      "niederschlag_mm": 0.0
+    }
+  ]
+}

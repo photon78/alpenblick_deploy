@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<krpano>
+
+<!-- ************************ -->
+<!--         Messages         -->
+<!-- ************************ -->
+
+  <data name="en_project_title"><![CDATA[Hotel Alpenblick]]></data>
+
+
+
+  <data name="en_pano11_title"><![CDATA[Hotel Alpenblick]]></data>
+  <data name="en_spotpoint14_tooltip"><![CDATA[Zeneggen]]></data>
+
+
+  <data name="en_pano9_title"><![CDATA[Zeneggen]]></data>
+  <data name="en_spotpoint13_tooltip"><![CDATA[Hotel Alpenblick]]></data>
+
+
+
+
+
+
+  <data name="en_logowebsiteurl"><![CDATA[https://www.alpenblick.swiss]]></data>
+  <data name="en_logotooltipText"><![CDATA[In neuem Fenster öffnen]]></data>
+  <data name="en_controlBar_izoomInTip"><![CDATA[vergrößern]]></data>
+  <data name="en_controlBar_izoomOutTip"><![CDATA[Rauszoomen]]></data>
+  <data name="en_controlBar_imoveLeftTip"><![CDATA[nach Links bewegen]]></data>
+  <data name="en_controlBar_imoveRightTip"><![CDATA[nach Rechts bewegen]]></data>
+  <data name="en_controlBar_imoveUpTip"><![CDATA[nach Oben bewegen]]></data>
+  <data name="en_controlBar_imoveDownTip"><![CDATA[nach Unten bewegen]]></data>
+  <data name="en_controlBar_iopenFsTip"><![CDATA[Vollbild betreten]]></data>
+  <data name="en_controlBar_icloseFsTip"><![CDATA[Vollbild verlassen]]></data>
+  <data name="en_controlBar_iautorotateOnTip"><![CDATA[Autorotation starten]]></data>
+  <data name="en_controlBar_iautorotateOffTip"><![CDATA[Autorotation stoppen]]></data>
+
+
+
+
+
+
+
+
+</krpano>

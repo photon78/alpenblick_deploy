@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Interaktives Panorama – Hotel Alpenblick Zeneggen</title>
+  <style>
+    * { padding: 0; margin: 0; box-sizing: border-box; }
+    html, body { height: 100%; overflow: hidden; background: #000; }
+    #container { height: 100%; width: 100%; }
+    #tourDIV { height: 100%; position: relative; overflow: hidden; }
+    #panoDIV {
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+    #panoDIV.cursorMoveMode {
+      cursor: move;
+      cursor: url(alpenblickpanodata/graphics/cursors_move_html5.cur), move;
+    }
+    #panoDIV.cursorDragMode {
+      cursor: grab;
+      cursor: -webkit-grab;
+      cursor: url(alpenblickpanodata/graphics/cursors_drag_html5.cur), default;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="tourDIV">
+      <div id="panoDIV">
+        <noscript>
+          <p>Bitte JavaScript aktivieren, um das virtuelle Panorama anzuzeigen.</p>
+        </noscript>
+      </div>
+      <script src="alpenblickpanodata/alpenblickpano.js"></script>
+      <script>
+        embedpano({
+          xml: "alpenblickpanodata/alpenblickpano.xml",
+          target: "panoDIV",
+          passQueryParameters: true,
+          html5: "only"
+        });
+      </script>
+    </div>
+  </div>
+</body>
+</html>
