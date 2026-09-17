@@ -10,9 +10,9 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # --- HTTPS erzwingen ---
-  RewriteCond %{HTTPS} !=on
-  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+  # --- HTTPS erzwingen --- (PREVIEW-MODE: temporaer deaktiviert bis Cutover)
+  # RewriteCond %{HTTPS} !=on
+  # RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 
   # --- Kein Zugriff auf _originals/ (JPG-Rohdaten) ---
   RewriteRule ^images/_originals/ - [F,L]
@@ -25,13 +25,13 @@
   RewriteCond %{REQUEST_URI} !/$
   RewriteRule ^(.*)$ /$1/ [R=301,L]
 
-  # --- non-www → www (kanonische Domain: www.alpenblick.swiss) ---
-  RewriteCond %{HTTP_HOST} ^alpenblick\.swiss$ [NC]
-  RewriteRule ^(.*)$ https://www.alpenblick.swiss/$1 [R=301,L]
+  # --- non-www → www (kanonische Domain: www.alpenblick.swiss) --- (PREVIEW-MODE: temporaer deaktiviert)
+  # RewriteCond %{HTTP_HOST} ^alpenblick\.swiss$ [NC]
+  # RewriteRule ^(.*)$ https://www.alpenblick.swiss/$1 [R=301,L]
 
-  # --- Domain-Redirect alpenblickzeneggen.ch → alpenblick.swiss ---
-  RewriteCond %{HTTP_HOST} ^(www\.)?alpenblickzeneggen\.ch$ [NC]
-  RewriteRule ^(.*)$ https://www.alpenblick.swiss/$1 [R=301,L]
+  # --- Domain-Redirect alpenblickzeneggen.ch → alpenblick.swiss --- (PREVIEW-MODE: temporaer deaktiviert)
+  # RewriteCond %{HTTP_HOST} ^(www\.)?alpenblickzeneggen\.ch$ [NC]
+  # RewriteRule ^(.*)$ https://www.alpenblick.swiss/$1 [R=301,L]
 
   # --- Doppelte Slashes bereinigen ---
   RewriteCond %{THE_REQUEST} \s[^?]*//
