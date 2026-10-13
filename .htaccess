@@ -28,10 +28,15 @@
   RewriteRule ^(.*)$ /$1/ [R=301,L]
 
   # --- non-www → www (kanonische Domain: www.alpenblick.swiss) --- (reaktiviert 2026-10-13, Cutover)
+  # ACME-Challenge auch hier vom Domain-Redirect ausnehmen (LE folgt Redirects, Cert-Ziel aber unklar)
+  RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/
   RewriteCond %{HTTP_HOST} ^alpenblick\.swiss$ [NC]
   RewriteRule ^(.*)$ https://www.alpenblick.swiss/$1 [R=301,L]
 
   # --- Domain-Redirect alpenblickzeneggen.ch → alpenblick.swiss --- (reaktiviert 2026-10-13, Cutover)
+  # ACME-Challenge ausnehmen: .swiss-Vhost existiert im Plesk noch nicht als Alias
+  # (Default-Page) — ohne Ausnahme wuerde die .ch-Challenge dorthin redirectet und 404en
+  RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/
   RewriteCond %{HTTP_HOST} ^(www\.)?alpenblickzeneggen\.ch$ [NC]
   RewriteRule ^(.*)$ https://www.alpenblick.swiss/$1 [R=301,L]
 
