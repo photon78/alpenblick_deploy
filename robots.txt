@@ -14,19 +14,16 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
-User-agent: anthropic-ai
-Allow: /
-
 User-agent: CCBot
 Allow: /
 
-Sitemap: https://alpenblick.swiss/sitemap-index.xml
+Sitemap: https://www.alpenblick.swiss/sitemap-index.xml
 
-# LLM-Kontext (llms.txt Spezifikation)
+# LLM-Kontext-Datei (Community-Vorschlag, kein etablierter Standard)
 # Siehe: https://www.alpenblick.swiss/llms.txt
-# Hinweis: llms.txt ist kein offizielles robots.txt-Directive,
-# aber KI-Crawler wie ClaudeBot, GPTBot etc. erkennen die Datei
-# automatisch unter /llms.txt (analog zu /robots.txt).
+# Hinweis: Es ist nicht belegt, dass grosse KI-Crawler llms.txt
+# tatsaechlich auswerten. Die Datei schadet nicht, wird aber im
+# Gegensatz zu robots.txt nicht automatisch erkannt.
 
 # Steblerbuch: nicht öffentlich indexiert
 User-agent: *
