@@ -62,21 +62,23 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 // Helpers
 // --------------------------------------------------------------------------
 function redirect_error(string $error, string $lang): void {
-    $base = match ($lang) {
-        'fr' => '/fr/a-propos/contact/',
-        'en' => '/en/about/contact/',
-        default => '/ueber-uns/kontakt/',
-    };
+    // PHP 7.4-kompatibel (Mikro laeuft 7.4.33): match() gibt es erst ab PHP 8.0
+    switch ($lang) {
+        case 'fr':   $base = '/fr/a-propos/contact/'; break;
+        case 'en':   $base = '/en/about/contact/';    break;
+        default:     $base = '/ueber-uns/kontakt/';   break;
+    }
     header('Location: ' . $base . '?error=' . $error);
     exit;
 }
 
 function redirect_danke(string $lang): void {
-    $danke = match ($lang) {
-        'fr' => '/fr/merci/',
-        'en' => '/en/thank-you/',
-        default => '/danke/',
-    };
+    // PHP 7.4-kompatibel (Mikro laeuft 7.4.33): match() gibt es erst ab PHP 8.0
+    switch ($lang) {
+        case 'fr':   $danke = '/fr/merci/';      break;
+        case 'en':   $danke = '/en/thank-you/';  break;
+        default:     $danke = '/danke/';         break;
+    }
     header('Location: ' . $danke);
     exit;
 }
