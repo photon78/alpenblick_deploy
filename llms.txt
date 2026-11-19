@@ -1,6 +1,6 @@
 # Hotel Alpenblick – Zeneggen, Wallis, Schweiz
 
-> Das Hotel Alpenblick ist ein familiengeführtes 3-Sterne-Hotel auf 1372 m in Zeneggen, Oberwallis. Seit 1935 von der Familie Kenzelmann betrieben. 9 Zimmer in 5 Kategorien (Doppelzimmer, Deluxe Doppelzimmer, Suite, Deluxe Einzelzimmer, Einzelzimmer), ein öffentliches Restaurant mit leichter Walliser Küche und eine hauseigene Kellerei mit eigenem Weinberg. Saison: Mitte Mai bis Ende Oktober. Idealer Ausgangspunkt für Wanderungen in der Moosalp-Region und Ausflüge zu Matterhorn, Dom und ins Rhonetal.
+> Das Hotel Alpenblick ist ein familiengeführtes 3-Sterne-Hotel auf 1372 m in Zeneggen, Oberwallis. Seit 1936 von der Familie Kenzelmann betrieben. 9 Zimmer in 5 Kategorien (Doppelzimmer, Deluxe Doppelzimmer, Suite, Deluxe Einzelzimmer, Einzelzimmer), ein öffentliches Restaurant mit leichter Walliser Küche und eine hauseigene Kellerei mit eigenem Weinberg. Saison: Mitte Mai bis Ende Oktober. Idealer Ausgangspunkt für Wanderungen in der Moosalp-Region und Ausflüge zu Matterhorn, Dom und ins Rhonetal.
 
 Das Hotel liegt am Bielweg 4, 3934 Zeneggen, auf einer Sonnenterrasse hoch über Visp mit Panoramablick auf die Walliser Alpen. Christoph Kenzelmann (3. Generation) kehrte 2007 nach Zeneggen zurück und übernahm das Hotel 2012. Er ist gleichzeitig Küchenchef. Er kocht täglich ein 5-Gang-Menü mit frischen Produkten aus dem hoteleigenen Gemüsegarten. Der hauseigene Weinberg auf 800–900 m ü. M. im Riedboden liefert Pinot Noir, Johannisberg (Silvaner) und Muscat – auf einzigartigem Serpentinit-Vulkangestein. Die Etiketten der Weinflaschen stammen von der japanischen Künstlerin Teruko Yokoi.
 
@@ -17,9 +17,9 @@ Sprachen: Deutsch (Standard), Französisch, Englisch.
 ### Hotel & Zimmer
 
 - [Willkommen – Übersicht](https://www.alpenblick.swiss/): Startseite mit Beschreibung des Hotels, seiner Lage im Oberwallis und der wichtigsten Merkmale.
+- [Richtpreise 2027](https://www.alpenblick.swiss/hotel/zimmer/#richtpreise): Richtpreise pro Nacht, inkl. Frühstück, exkl. Kurtaxen (CHF 3.-/Tag/Person), gültig bei Direktbuchung (Webseite, Telefon, E-Mail). Deluxe Doppelzimmer 175/205/255 CHF (1/2/3 Personen), Deluxe Einzelzimmer 155/185 CHF, Doppelzimmer 155/185 CHF, Einzelzimmer 135 CHF, Suite 250/260/295/335 CHF (1/2/3/4 Personen).
 - [Zimmer mit Balkon](https://www.alpenblick.swiss/hotel/zimmer/): Alle Zimmertypen – Doppelzimmer, Deluxe Doppelzimmer (24–28 m²), Suite (separater Wohnbereich + Küche), Deluxe Einzelzimmer (18 m², Queensize-Bett 2m × 1,60m), Einzelzimmer. Alle mit Balkon, Nichtraucherzimmer, Lärchenholz-Ausstattung, Bettlänge 2m.
 - [Online buchen](https://www.alpenblick.swiss/hotel/buchen/): Direktbuchung zum besten verfügbaren Preis mit kostenloser Stornierung bis am Vortag.
-- [Preisliste](https://www.alpenblick.swiss/hotel/preisliste/): Aktuelle Zimmerpreise und Saisonzeiten.
 - [Alle Services A–Z](https://www.alpenblick.swiss/hotel/alle-services/): 37 Dienstleistungen, inkl. E-Ladestation, Hunde erlaubt (CHF 10/Tag), Babybett kostenlos, WLAN gratis, Wäscheservice, Bibliothek, Gesellschaftsspiele.
 - [Bewertungen](https://www.alpenblick.swiss/hotel/bewertungen/): Gästebewertungen von Booking.com und Auszeichnungen.
 - [FAQ](https://www.alpenblick.swiss/hotel/faq/): 27 häufig gestellte Fragen zu Anreise, Zimmer, Restaurant, Wein, Hunde, Buchung und mehr.
@@ -56,9 +56,9 @@ Sprachen: Deutsch (Standard), Französisch, Englisch.
 ### Hôtel & Chambres
 
 - [Bienvenue – Aperçu](https://www.alpenblick.swiss/fr/): Page d'accueil avec description de l'hôtel, de sa situation dans le Haut-Valais et de ses caractéristiques principales.
+- [Tarifs indicatifs 2027](https://www.alpenblick.swiss/fr/hotel/chambres/#richtpreise): Prix indicatifs par nuit, petit-déjeuner compris, hors taxe de séjour (CHF 3.-/jour/personne), valables en cas de réservation directe. Chambre double Deluxe 175/205/255 CHF, chambre individuelle Deluxe 155/185 CHF, chambre double 155/185 CHF, chambre individuelle 135 CHF, suite 250/260/295/335 CHF.
 - [Chambres avec balcon](https://www.alpenblick.swiss/fr/hotel/chambres/): Tous les types de chambres – chambre double, chambre double Deluxe (24–28 m²), suite (salon séparé + cuisine), chambre individuelle Deluxe (18 m², lit queen 2m × 1,60m), chambre individuelle. Toutes avec balcon, non-fumeur, mobilier en bois de mélèze, longueur de lit 2m.
 - [Réserver en ligne](https://www.alpenblick.swiss/fr/hotel/reservation/): Réservation directe au meilleur prix disponible avec annulation gratuite jusqu'à la veille.
-- [Liste des prix](https://www.alpenblick.swiss/fr/hotel/liste-des-prix/): Tarifs actuels et périodes de saison.
 - [Tous les services A–Z](https://www.alpenblick.swiss/fr/hotel/toutes-services/): 37 prestations, incl. borne de recharge, chiens admis (CHF 10/jour), lit bébé gratuit, Wi-Fi gratuit, service de blanchisserie, bibliothèque, jeux de société.
 - [Avis](https://www.alpenblick.swiss/fr/hotel/avis/): Avis des clients de Booking.com et distinctions.
 - [FAQ](https://www.alpenblick.swiss/fr/hotel/faq/): 27 questions fréquentes sur l'arrivée, les chambres, le restaurant, le vin, les chiens, la réservation et plus.
@@ -76,7 +76,7 @@ Sprachen: Deutsch (Standard), Französisch, Englisch.
 
 ### À propos
 
-- [Portrait & Histoire](https://www.alpenblick.swiss/fr/a-propos/portrait/): Trois générations de la famille Kenzelmann depuis 1935. Josef et Katharina (fondateurs), Klaus et Elsbeth (agrandissement 1978–1980), Christoph (depuis 2007).
+- [Portrait & Histoire](https://www.alpenblick.swiss/fr/a-propos/portrait/): Trois générations de la famille Kenzelmann depuis 1936. Josef et Katharina (fondateurs), Klaus et Elsbeth (agrandissement 1978–1980), Christoph (depuis 2007).
 - [Contact](https://www.alpenblick.swiss/fr/a-propos/contact/): Formulaire de contact et itinéraire.
 
 ### Médias
@@ -95,9 +95,9 @@ Sprachen: Deutsch (Standard), Französisch, Englisch.
 ### Hotel & Rooms
 
 - [Welcome – Overview](https://www.alpenblick.swiss/en/): Homepage with description of the hotel, its location in the Upper Valais and its main features.
+- [Guide prices 2027](https://www.alpenblick.swiss/en/hotel/rooms/#richtpreise): Guide prices per night including breakfast, excluding tourist tax (CHF 3.00/person/day), valid for direct bookings. Deluxe Double Room 175/205/255 CHF, Deluxe Single Room 155/185 CHF, Double Room 155/185 CHF, Single Room 135 CHF, Suite 250/260/295/335 CHF.
 - [Rooms with Balcony](https://www.alpenblick.swiss/en/hotel/rooms/): All room types – double room, Deluxe double room (24–28 m²), suite (separate living area + kitchen), Deluxe single room (18 m², queen bed 2m × 1.60m), single room. All with balcony, non-smoking, larch wood furnishings, bed length 2m.
 - [Book Online](https://www.alpenblick.swiss/en/hotel/booking/): Direct booking at the best available rate with free cancellation until the day before.
-- [Price List](https://www.alpenblick.swiss/en/hotel/pricelist/): Current room rates and seasonal periods.
 - [All Services A–Z](https://www.alpenblick.swiss/en/hotel/all-services/): 37 amenities, incl. EV charging station, dogs welcome (CHF 10/day), free baby cot, free Wi-Fi, laundry service, library, board games.
 - [Reviews](https://www.alpenblick.swiss/en/hotel/reviews/): Guest reviews from Booking.com and awards.
 - [FAQ](https://www.alpenblick.swiss/en/hotel/faq/): 27 frequently asked questions about arrival, rooms, restaurant, wine, dogs, booking and more.
@@ -115,7 +115,7 @@ Sprachen: Deutsch (Standard), Französisch, Englisch.
 
 ### About Us
 
-- [Portrait & History](https://www.alpenblick.swiss/en/about/portrait/): Three generations of the Kenzelmann family since 1935. Josef and Katharina (founders), Klaus and Elsbeth (expansion 1978–1980), Christoph (since 2007).
+- [Portrait & History](https://www.alpenblick.swiss/en/about/portrait/): Three generations of the Kenzelmann family since 1936. Josef and Katharina (founders), Klaus and Elsbeth (expansion 1978–1980), Christoph (since 2007).
 - [Contact](https://www.alpenblick.swiss/en/about/contact/): Contact form and directions.
 
 ### Media
