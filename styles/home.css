@@ -81,7 +81,7 @@
 }
 .snowflake {
   position: absolute;
-  top: -12px;
+  top: 0;
   display: block;
   width: var(--fs, 3px);
   height: var(--fs, 3px);
@@ -96,6 +96,26 @@
   12%  { opacity: var(--op, 0.8); }
   88%  { opacity: var(--op, 0.8); }
   100% { transform: translateY(520px) translateX(calc(var(--sway, 0px) * -1)); opacity: 0; }
+}
+
+/* ── Saisonstart-Hinweis (weiss, ohne Hintergrund, nach Bildaufbau eingeblendet) ── */
+.hero__saisonstart {
+  font-family: var(--font-sans);
+  font-size: var(--text-xl);
+  font-weight: 400;
+  color: #fff;
+  text-align: center;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.75rem;
+  max-width: 60ch;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.55);
+  opacity: 0;
+  animation: saisonstartFade 1.2s ease-out 0.9s forwards;
+}
+@keyframes saisonstartFade {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ── Highlights ────────────────────── */
