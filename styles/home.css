@@ -68,6 +68,36 @@
   100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; }
 }
 
+/* ── Hero Snowfall (dezent, nur unteres Viertel) ──────────── */
+.hero__snow {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 25%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+.snowflake {
+  position: absolute;
+  top: -12px;
+  display: block;
+  width: var(--fs, 3px);
+  height: var(--fs, 3px);
+  margin-left: var(--ml, 0);
+  background: rgba(255, 255, 255, var(--op, 0.8));
+  border-radius: 50%;
+  animation: alpenblickSnow var(--dur, 9s) linear infinite;
+  animation-delay: var(--delay, 0s);
+}
+@keyframes alpenblickSnow {
+  0%   { transform: translateY(0)      translateX(var(--sway, 0px)); opacity: 0; }
+  12%  { opacity: var(--op, 0.8); }
+  88%  { opacity: var(--op, 0.8); }
+  100% { transform: translateY(520px) translateX(calc(var(--sway, 0px) * -1)); opacity: 0; }
+}
+
 /* ── Highlights ────────────────────── */
 .highlights { padding: var(--space-xl) var(--space-md); background: var(--color-bg); }
 .highlights__grid {
