@@ -17,9 +17,6 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-User-agent: OAI-SearchBot
-Allow: /
-
 Sitemap: https://www.alpenblick.swiss/sitemap-index.xml
 
 # LLM-Kontext-Datei (Community-Vorschlag, kein etablierter Standard)
@@ -31,7 +28,3 @@ Sitemap: https://www.alpenblick.swiss/sitemap-index.xml
 # Steblerbuch: nicht öffentlich indexiert
 User-agent: *
 Disallow: /stebler/
-
-# Interner Bereich: nicht indexieren
-User-agent: *
-Disallow: /intern/
