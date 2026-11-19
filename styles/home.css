@@ -29,6 +29,7 @@
 
 .hero__bottom {
   display: flex; flex-direction: column; align-items: center;
+  margin-top: -10vh;
 }
 .hero__eyebrow {
   font-family: var(--font-sans); font-size: var(--text-xs);
@@ -68,13 +69,10 @@
   100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; }
 }
 
-/* ── Hero Snowfall (dezent, nur unteres Viertel) ──────────── */
+/* ── Hero Snowfall (ganze Höhe, fällt von oben) ──────────── */
 .hero__snow {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 25%;
+  inset: 0;
   overflow: hidden;
   pointer-events: none;
   z-index: 1;
@@ -95,7 +93,7 @@
   0%   { transform: translateY(0)      translateX(var(--sway, 0px)); opacity: 0; }
   12%  { opacity: var(--op, 0.8); }
   88%  { opacity: var(--op, 0.8); }
-  100% { transform: translateY(520px) translateX(calc(var(--sway, 0px) * -1)); opacity: 0; }
+  100% { transform: translateY(calc(100svh + 60px)) translateX(calc(var(--sway, 0px) * -1)); opacity: 0; }
 }
 
 /* ── Saisonstart-Hinweis (weiss, ohne Hintergrund, nach Bildaufbau eingeblendet) ── */
@@ -107,7 +105,7 @@
   text-align: center;
   line-height: 1.4;
   letter-spacing: 0.02em;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1.5rem;
   max-width: 60ch;
   text-shadow: 0 2px 24px rgba(0,0,0,0.55);
   opacity: 0;
